@@ -1,0 +1,51 @@
+Table Game {
+    id int [pk, increment]
+    title varchar
+    description varchar
+    designer varchar
+    year_released date
+    number_of_players int
+    estimated_time_to_play varchar
+    age_recommendation int 
+    userId int [ref: > User.id]
+    image_url varchar    
+}
+
+Table User {
+    id int [pk, increment]
+    first_name varchar
+    last_name varchar
+    username varchar 
+}
+
+Table Category {
+    id int [pk]
+    label varchar
+}
+
+Table GameCategory {
+    id int [pk]
+    gameId int [ref: > Game.id]
+    categoryId int [ref: > Category.id]
+}
+
+Table GameImage {
+    id int [pk]
+    gameId int [ref: > Game.id]
+    userId int [ref: > User.id]
+    image_url varchar
+}
+
+Table GameRating {
+    id int [pk]
+    gameId int [ref: > Game.id]
+    userId int [ref: > User.id]
+    rating int
+}
+
+Table GameReview {
+    id int [pk]
+    gameId int [ref: > Game.id]
+    userId int [ref: > User.id]
+    review varchar
+}
